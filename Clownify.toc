@@ -1,0 +1,6 @@
+## Interface: 11200
+## Title: Clownify - random armor selector
+## Notes: Get ready to join the clown fiesta!
+## Version: 0.1
+## Author: McPewPew
+Clownify.lua
