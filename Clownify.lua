@@ -2,8 +2,8 @@ local gearList = {}  -- your things
 local lastSwapTime = {}  -- if you change your pants too fast you'll get dizzy again
 local swapCount = {}  -- you know how you are...shoe obsessed. Strict limits on how many you're allowed to try on, we don't want an 'incident' like last time.
 local stoppedSlots = {}  -- shoe limit hit, no more shoes for you.
-local indecisionCounter = 3  -- Just make a decision already! You've got 6 pairs of shoes, you don't need to try them all on a million times! 
-local timeIsMoney = 6  -- we're not waiting all day just for you to choose to wear *that* again
+local indecisionCounter = 2  -- Just make a decision already! You've got 6 pairs of shoes, you don't need to try them all on a million times! 
+local timeIsMoney = 1  -- we're not waiting all day just for you to choose to wear *that* again
 
 local _G = getfenv(0) -- OG has no _G :'(
 
@@ -16,15 +16,15 @@ local exceptionItems = {
 
 -- priest "I could wear plate if I wanted, but it's not worth the risk! It'll all seem like it's going well and then you realise you're wearing banana shoulders..."
 local classArmorTypes = {
-    ["DRUID"] = { "Cloth", "Leather" },
-    ["ROGUE"] = { "Cloth", "Leather" },
-    ["SHAMAN"] = { "Cloth", "Leather", "Mail" },
-    ["HUNTER"] = { "Cloth", "Leather", "Mail" },
-    ["PALADIN"] = { "Cloth", "Leather", "Mail", "Plate" },
-    ["WARRIOR"] = { "Cloth", "Leather", "Mail", "Plate" },
+    ["Druid"] = { "Cloth", "Leather" },
+    ["Rogue"] = { "Cloth", "Leather" },
+    ["Shaman"] = { "Cloth", "Leather", "Mail" },
+    ["Hunter"] = { "Cloth", "Leather", "Mail" },
+    ["Paladin"] = { "Cloth", "Leather", "Mail", "Plate" },
+    ["Warrior"] = { "Cloth", "Leather", "Mail", "Plate" },
     ["Priest"] = { "Cloth" },
-    ["MAGE"] = { "Cloth" },
-    ["WARLOCK"] = { "Cloth" },
+    ["Mage"] = { "Cloth" },
+    ["Warlock"] = { "Cloth" },
 }
 
 -- oh look at you! so classy!!
@@ -75,7 +75,7 @@ local mostlyKindWords = {
     "O RLY?",
     "All their guild base will belong to you",
     "\r\"Baby, I been havin a tough night so treat me nice aight?\"\r\"Aight\"\r\"Slip out of those \124cff1eff00\124Hitem:9999::::::::80:::::\124h[Black Mageweave Leggings]\124h\124r baby, yeah.\"\r\"I slip out of my \124cff1eff00\124Hitem:9999::::::::80:::::\124h[Black Mageweave Leggings]\124h\124r, just for you, "..UnitName("player")..".\"\r\"Oh yeah, aight. Aight, I put on my \124cff0070dd\124Hitem:14136::::::::60:::::\124h[Robe of Winter Night]\124h\124r and \124cffffffff\124Hitem:7::::::::80:::::\124h[The Greatest Wizzard Hat]\124h\124r.\"",
-	"\rThe "..(GetInventoryItemLink("player", 8) or "shoes").." on my feet (I bought it)".."\rThe "..(GetInventoryItemLink("player",5) or "clothes").." I\'m wearing (I bought it),\rThe "..(GetInventoryItemLink("player",11) or "ring").." I\'m rocking (I bought it),\rThe "..GetInventoryItemLink("player",9).." I\'m wearing (I bought it),\r\'Cause I depend on me if I want it,"
+	"\rThe "..(GetInventoryItemLink("player", 8) or "shoes").." on my feet (I bought it)".."\rThe "..(GetInventoryItemLink("player",5) or "clothes").." I\'m wearing (I bought it),\rThe "..(GetInventoryItemLink("player",11) or "ring").." I\'m rocking (I bought it),\rThe "..(GetInventoryItemLink("player",9) or "watch").." I\'m wearing (I bought it),\r\'Cause I depend on me if I want it,"
 	}
 
 -- why you got to be like this? just follow the rules man!
