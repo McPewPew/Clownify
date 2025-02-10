@@ -50,10 +50,11 @@ local mostlyKindWords = {
     "Myspace is divided - you're either the best or worst dressed person ever",
     "Just tell it's what the cool kids are wearing...it's like totally BiS biatch!",
     "Looking like that? Chuck Norris would do terrible things to you...you know you'd love it",
-    "OMG! Everyone on TeamSpeak is going to say how cool your look!",
+    "OMG! Everyone on TeamSpeak is going to say how hot you look!",
     "*Tips Fedora*",
     "Ring ding ding daa baa, Baa aramba baa bom baa barooumba",
     "*www.fraps.com*",
+	"Unregistered HyperCam 2",
     "Yeah! Now go dance on that mailbox! Get that bag! You go girl!!! $$$$$$$",
     "You're obviously the main character",
     "All the one shouldered noobs are going to be so jealous",
@@ -351,11 +352,27 @@ local function displayRandomMessage()
 
     DEFAULT_CHAT_FRAME:AddMessage(coloredMessage)
 end
+-- fashionably late loading message
+local f = CreateFrame("Frame")
+local delay = 10  -- seconds
+local elapsed = 0
 
-displayRandomMessage()
-
-
-
+f:RegisterEvent("PLAYER_ENTERING_WORLD")
+f:SetScript("OnEvent", function()
+    if event == "PLAYER_ENTERING_WORLD" then
+        f:SetScript("OnUpdate", function()
+            elapsed = elapsed + arg1
+            if elapsed >= delay then
+				displayRandomMessage()
+				f:UnregisterEvent("PLAYER_ENTERING_WORLD")  -- Unregister the specific event
+                f:SetScript("OnUpdate", nil)
+                f:SetScript("OnEvent", nil)
+                f:Hide()
+                f = nil  -- Allow garbage collection
+            end
+        end)
+    end
+end)
 
 
 
