@@ -231,7 +231,7 @@ end
 
 -- So, you're thinking about maybe getting a new look?
 local function clownify()
-    DEFAULT_CHAT_FRAME:AddMessage("You're going to look so good...just *so* good!!")  
+    --DEFAULT_CHAT_FRAME:AddMessage("You're going to look so good...just *so* good!!")   --shhh don't tell anyone this is here *secret*
     rummage() --let's see what you've got
     if not clownifyFrame then
         clownifyFrame = CreateFrame("Frame")
