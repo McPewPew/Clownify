@@ -19,4 +19,4 @@ Trust me...
 Hey! You take your finger off that button right now!  
   
 …Okay, fine. There may be a certain amount of nonsense in this otherwise entirely sensible addon. But that’s what makes it beautiful. 😌✨  
-Did I mention how pretty/handsome you're looking today? You're breathtaking! uWu
+Did I mention how pretty/handsome you're looking today? You're breathtaking! 💜
